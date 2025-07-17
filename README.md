@@ -2,6 +2,10 @@
 
 A simple digital drawing canvas built as part of **The Odin Project** curriculum. Practice drawing by clicking and dragging on the grid.
 
+## Live Preview
+
+[View Live Demo](https://piyushb-27.github.io/Etch-a-Sketch)
+
 ## Features
 
 - **Draw on Grid** - Click and drag to color squares
