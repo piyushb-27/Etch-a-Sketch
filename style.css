@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Irish+Grover&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    background-color:#f5f3ff;
+    margin: 0; /* Reset default body margin */
+    padding: 0; /* Reset default body padding */
+    background-color:#e2ddf8;
     display:flex;
     flex-direction:column;
-    align-items:center;
+    /* Removed align-items: center; to prevent centering of the etch-a-sketch-container */
 }
 
 em {
     font-family:"Montserrat", Arial;
+    align-self:center;
 }
 
-.buttons {
-    display:flex;
-    justify-content:center;
-    margin:10px;
-}
 .grid-row {
     display:flex;
     flex-direction:row;
@@ -24,8 +22,8 @@ em {
 .grid {
     display:flex;
     flex-direction:column;
-    width: 624px;
-    height: 624px;
+    width: 605px;
+    height: 605px;
 }
 
 .grid .grid-row {
@@ -49,20 +47,15 @@ em {
     background: rgba(255, 255, 255, 0.6);
     z-index: 1;
 }
-.modify {
-    margin:10px;
-    font-size: 20px;
-    display:flex;
-    flex-direction:row;
-    justify-content:center;
-    align-items:baseline;
-    gap:5px;
-}
+
+/* Center modify section using auto margins */
+
 
 button {
     font-size: 20px;
     padding: 2px 5px;
     border-radius:10px;
+    border-color:rgb(182, 138, 252);
     margin:10px;
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     font-family: "Montserrat", Arial;
@@ -70,26 +63,60 @@ button {
 
 button:hover {
     transform: scale(1.03);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 10px 30px rgba(154, 52, 244, 0.2);
     transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Positioning for the grid - relative to .etch-a-sketch-container */
 .container {
     border-radius:6px;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 border 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    left: 50%; /* Start at 50% from left of parent */
+    transform: translateX(-50%); /* Move back by half its own width to truly center */
+    top: 20px; /* Vertical offset from top of .etch-a-sketch-container */
 }
 
 /* Smooth color transition for erasing */
 .grid .grid-row div {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1),
                 background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* Center h1 using auto margins */
 h1 {
     font-size:50px;
-    margin:10px;
+    margin:10px auto; /* Centers the h1 horizontally */
     font-family: "Irish Grover", Arial;
+}
+
+/* New styles for layout using absolute positioning */
+.etch-a-sketch-container {
+    position: relative; /* Establish positioning context for absolute children */
+    width: 100%; /* Take full width of the body */
+    min-height: 700px; /* Ensure enough height to contain the absolutely positioned grid */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; /* Important for width calculation */
+}
+
+.controls-column {
+    position: absolute;
+    left: 40px; /* Offset from left edge of .etch-a-sketch-container */
+    top: 80px; /* Vertical offset from top of .etch-a-sketch-container */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 20px; /* Add some space between buttons and potential grid overlap */
+    z-index: 10; /* Ensure buttons are on top if they visually overlap with the grid area */
+}
+
+
+
+/* Remove old main-section styling as it's no longer used */
+.main-section {
+    display: none;
 }
