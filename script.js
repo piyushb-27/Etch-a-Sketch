@@ -88,7 +88,7 @@ grid.addEventListener("mousedown", function(event) {
     
 });
 
-grid.addEventListener("mouseup", function() {
+document.addEventListener("mouseup", function() {
     isMouseDown = false;
 });
 
