@@ -11,6 +11,7 @@ function createGrid(num) {
 
         for (let j=0; j<num; j++) {
             let div = document.createElement("div")
+            div.classList.add("square-div")
             div.style["border"] = "0.2px solid black"
             divRow.appendChild(div)
         }
@@ -71,20 +72,23 @@ staticBtn.addEventListener("click", function (){
     container.style["box-shadow"] = `0 4px 12px ${color}`
     isMultiColorStatus = false
 })
+
 // coloring logic
 
 let isMouseDown = false;
 // Track mouse state
 grid.addEventListener("mousedown", function(event) {
-    isMouseDown = true;
-    if (isMultiColorStatus) {
-        let randomColor = pickOneColor()
-        event.target.style["background-color"] = randomColor
-        container.style["border"] = `2px solid ${randomColor}`;
-        container.style["box-shadow"] = `0 4px 12px ${randomColor}`
+    if (event.target.className === "square-div") {
+        isMouseDown = true;
+        if (isMultiColorStatus) {
+            let randomColor = pickOneColor()
+            event.target.style["background-color"] = randomColor
+            container.style["border"] = `2px solid ${randomColor}`;
+            container.style["box-shadow"] = `0 4px 12px ${randomColor}`
 
-    } 
-    else event.target.style["background-color"] = color
+        } 
+        else event.target.style["background-color"] = color
+    }
     
 });
 
@@ -95,6 +99,7 @@ document.addEventListener("mouseup", function() {
 // Color divs when dragging over them
 grid.addEventListener("mouseover", function(event) {
     if (!isMouseDown) return;
+    if (event.target.className === "square-div") {
     if (isMultiColorStatus) {
         let randomColor = pickOneColor()
         event.target.style["background-color"] = randomColor
@@ -102,6 +107,7 @@ grid.addEventListener("mouseover", function(event) {
         container.style["box-shadow"] = `0 4px 12px ${randomColor}`
     } 
     else event.target.style["background-color"] = color
+}
 });
 
 // Prevent text selection while dragging
