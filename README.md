@@ -8,8 +8,8 @@ A simple digital drawing canvas built as part of **The Odin Project** curriculum
 
 ### Screenshots
 
-![Etch-a-Sketch Screenshot 1](./screenshots/screenshot1.png)
-![Etch-a-Sketch Screenshot 2](./screenshots/screenshot2.png)
+![Etch-a-Sketch Screenshot 1](./images/screenshot1.png)
+![Etch-a-Sketch Screenshot 2](./images/screenshot2.png)
 
 ## Features
 
